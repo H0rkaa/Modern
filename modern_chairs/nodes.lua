@@ -2,7 +2,7 @@
 minetest.register_node("modern_chairs:stool_plywood", {
     description = "Stool in plywood",
     drawtype = "mesh",
-    mesh = "tabouret.obj",
+    mesh = "stool.gltf",
     tiles = {"plywood.png"},
     paramtype = "light",
     paramtype2 = "facedir",
@@ -26,7 +26,7 @@ minetest.register_node("modern_chairs:armchair_plywood", {
 minetest.register_node("modern_chairs:stool_wood_light", {
     description = "Stool in light wood",
     drawtype = "mesh",
-    mesh = "tabouret.obj",
+    mesh = "stool.gltf",
     tiles = {"wood_light.png"},
     paramtype = "light",
     paramtype2 = "facedir",
@@ -37,8 +37,8 @@ minetest.register_node("modern_chairs:stool_wood_light", {
 minetest.register_node("modern_chairs:armchair_wood_light", {
     description = "Armchair in light wood",
     drawtype = "mesh",
-    mesh = "fauteuil.obj",
-    tiles = {"coussin.png", "wool_white.png", "wood_light.png",},
+    mesh = "fauteuil.gltf",
+    tiles = {"wood_light.png", "wool_white.png", "coussin.png",},
     paramtype = "light",
     paramtype2 = "facedir",
     sunlight_propagates = true,
@@ -50,7 +50,7 @@ minetest.register_node("modern_chairs:armchair_wood_light", {
 minetest.register_node("modern_chairs:stool_wood_dark", {
     description = "Stool in dark wood",
     drawtype = "mesh",
-    mesh = "tabouret.obj",
+    mesh = "stool.gltf",
     tiles = {"wood_dark.png"},
     paramtype = "light",
     paramtype2 = "facedir",
@@ -61,8 +61,8 @@ minetest.register_node("modern_chairs:stool_wood_dark", {
 minetest.register_node("modern_chairs:armchair_wood_dark", {
     description = "Armchair in dark wood",
     drawtype = "mesh",
-    mesh = "fauteuil.obj",
-    tiles = {"coussin.png", "wool_white.png", "wood_dark.png",},
+    mesh = "fauteuil.gltf",
+    tiles = {"wood_dark.png", "wool_white.png", "coussin.png",},
     paramtype = "light",
     paramtype2 = "facedir",
     sunlight_propagates = true,

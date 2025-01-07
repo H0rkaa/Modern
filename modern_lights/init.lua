@@ -11,7 +11,7 @@ function modern_lights.toggle_lampe(pos, node)
     meta:set_int("state", state)
 
     -- Déterminer le nouveau nœud à placer
-    local new_node_name = state == 1 and node.name .. "_on" or node.name .. "_off"
+    local new_node_name = state == 1 and node.name:gsub("_off$", "_on") or node.name:gsub("_on$", "_off")
     minetest.swap_node(pos, {name = new_node_name, param2 = node.param2})
 
     -- Mettre à jour le texte d'information
@@ -28,10 +28,12 @@ function modern_lights.register_lampe(name, def)
     local def_on = table.copy(def)
     def_on.light_source = light_on
     def_on.drop = name .. "_off" -- Déposer la version "éteinte" lorsqu'elle est cassée
-    def_on.groups = def.groups or {}
+    def_on.groups = table.copy(def.groups or {})
     def_on.groups.not_in_creative_inventory = 1 -- Cacher dans l'inventaire créatif
     def_on.on_punch = function(pos, node, player, pointed_thing)
-        modern_lights.toggle_lampe(pos, node)
+        if player and player:is_player() then
+            modern_lights.toggle_lampe(pos, node)
+        end
     end
 
     local def_off = table.copy(def)

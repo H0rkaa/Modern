@@ -26,7 +26,7 @@ minetest.register_node("modern_blocks:wood_light", {
 minetest.register_node("modern_blocks:wooden_bars", {
     description = "Wooden bars",
     drawtype = "mesh",
-    mesh = "barre.obj",
+    mesh = "wooden_bars.gltf",
     tiles = {"wooden_bars.png"},
     paramtype = "light",
     paramtype2 = "facedir",
@@ -34,10 +34,10 @@ minetest.register_node("modern_blocks:wooden_bars", {
     groups = {cracky = 3},
 })
 
-minetest.register_node("modern_blocks:wooden_bars_foliage", {
+minetest.register_node("modern_blocks:wooden_bars_leaves", {
     description = "Wooden bars with foliage",
     drawtype = "mesh",
-    mesh = "barre_feuille.obj",
+    mesh = "wooden_bars_leaves.gltf",
     tiles = {"wooden_bars.png", "foliage_front.png", "foliage_middle.png", "foliage_side.png"},
     paramtype = "light",
     paramtype2 = "facedir",

@@ -31,45 +31,60 @@ minetest.register_node("modern_kitchen:sushi", {
     sunlight_propagates = true,
     groups = {cracky = 3},
 })
+
+
 --Black gilt furnitures
-minetest.register_node("modern_kitchen:bas_placrad", {
-    description = "Placard du bas",
+minetest.register_node("modern_kitchen:black_cupboard_low", {
+    description = "Low Cupboard",
     drawtype = "mesh",
-    mesh = "placard_bas.gltf",
-    tiles = {"gris_placard.png", "noir_plywood.png", "gold.png",},
+    mesh = "black_cupboard_low.gltf",
+    tiles = {"gris_placard.png", "noir.png", "gold.png",},
     paramtype = "light",
     paramtype2 = "facedir",
     sunlight_propagates = true,
     groups = {cracky = 3},
 })
 
-minetest.register_node("modern_kitchen:placard_noir", {
-    description = "Placard",
+minetest.register_node("modern_kitchen:black_cupboard_large", {
+    description = "Large Cupboard",
     drawtype = "mesh",
-    mesh = "placard_noir.gltf",
-    tiles = {"gris_placard.png", "plywood.png", "gold.png",},
+    mesh = "black_cupboard_large.gltf",
+    tiles = {"gris_placard.png", "noir.png", "gold.png"},
+    paramtype = "light",
+    paramtype2 = "facedir",
+    sunlight_propagates = true,
+    groups = {cracky = 3},
+    selection_box = {
+        type = "fixed",
+        fixed = {
+            {-0.5, -0.5, -0.5, 0.5, 1.5, 0.5},
+        },
+    },
+    collision_box = {
+        type = "fixed",
+        fixed = {
+            {-0.5, -0.5, -0.5, 0.5, 1.5, 0.5},
+        },
+    },
+})
+
+minetest.register_node("modern_kitchen:black_cupboard", {
+    description = "Cupboard",
+    drawtype = "mesh",
+    mesh = "black_cupboard.gltf",
+    tiles = {"gris_placard.png", "noir.png", "gold.png",},
     paramtype = "light",
     paramtype2 = "facedir",
     sunlight_propagates = true,
     groups = {cracky = 3},
 })
 
-minetest.register_node("modern_kitchen:placard_haut", {
-    description = "Placard",
-    drawtype = "mesh",
-    mesh = "placard_haut.gltf",
-    tiles = {"gris_placard.png", "noir_placard.png", "gold.png",},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
 
 --White plywood furnitures
-minetest.register_node("modern_kitchen:placard", {
-    description = "Placard",
+minetest.register_node("modern_kitchen:simple_furniture", {
+    description = "Simple furniture",
     drawtype = "mesh",
-    mesh = "placard.gltf",
+    mesh = "simple_furniture.gltf",
     tiles = {"concrete_white.png", "plywood.png"},
     paramtype = "light",
     paramtype2 = "facedir",
@@ -77,10 +92,10 @@ minetest.register_node("modern_kitchen:placard", {
     groups = {cracky = 3},
 })
 
-minetest.register_node("modern_kitchen:plan", {
-    description = "Plan",
+minetest.register_node("modern_kitchen:worktop_central", {
+    description = "Worktop Central",
     drawtype = "mesh",
-    mesh = "plan.gltf",
+    mesh = "worktop_central.gltf",
     tiles = {"polished_stone.png", "plywood.png"},
     paramtype = "light",
     paramtype2 = "facedir",
@@ -88,10 +103,10 @@ minetest.register_node("modern_kitchen:plan", {
     groups = {cracky = 3},
 })
 
-minetest.register_node("modern_kitchen:plan_fin", {
-    description = "Plan Fin",
+minetest.register_node("modern_kitchen:worktop_border", {
+    description = "Worktop Border",
     drawtype = "mesh",
-    mesh = "plan_fin.gltf",
+    mesh = "worktop_border.gltf",
     tiles = {"polished_stone.png", "plywood.png"},
     paramtype = "light",
     paramtype2 = "facedir",
@@ -99,10 +114,10 @@ minetest.register_node("modern_kitchen:plan_fin", {
     groups = {cracky = 3},
 })
 
-minetest.register_node("modern_kitchen:evier_wood", {
-    description = "Evier bois",
+minetest.register_node("modern_kitchen:sink", {
+    description = "Sink",
     drawtype = "mesh",
-    mesh = "evier_wood.gltf",
+    mesh = "sink.gltf",
     tiles = {"plywood.png", "concrete_white.png"},
     paramtype = "light",
     paramtype2 = "facedir",
@@ -110,27 +125,3 @@ minetest.register_node("modern_kitchen:evier_wood", {
     groups = {cracky = 3},
 })
 
-
---white wood dark furnitures
-
-minetest.register_node("modern_kitchen:placard2", {
-    description = "Placard",
-    drawtype = "mesh",
-    mesh = "placard.gltf",
-    tiles = {"concrete_white.png", "wood_dark.png"},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
-
-minetest.register_node("modern_kitchen:evier_dark_wood", {
-    description = "Evier dark bois",
-    drawtype = "mesh",
-    mesh = "evier_dark_wood.gltf",
-    tiles = {"wood_dark.png", "concrete_white.png"},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
