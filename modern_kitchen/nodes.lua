@@ -13,7 +13,7 @@ minetest.register_node("modern_kitchen:paper_towel", {
 minetest.register_node("modern_kitchen:knives_holder", {
     description = "Knives holder",
     drawtype = "mesh",
-    mesh = "knives.glb",
+    mesh = "knives_holder.gltf",
     tiles = {"knives_holder.png", "knives.png",},
     paramtype = "light",
     paramtype2 = "facedir",
