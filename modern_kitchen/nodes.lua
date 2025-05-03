@@ -1,127 +1,37 @@
---Decorative kitchen
-minetest.register_node("modern_kitchen:paper_towel", {
-    description = "Paper towel",
-    drawtype = "mesh",
-    mesh = "sopalin.gltf",
-    tiles = {"plywood.png", "paper_towel.png",},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
+local function register_kitchen_node(name, desc, mesh, tiles, has_inventory, c, l)
+    local node_def = {
+        description = desc,
+        drawtype = "mesh",
+        mesh = mesh,
+        tiles = tiles,
+        paramtype = "light",
+        paramtype2 = "facedir",
+        sunlight_propagates = true,
+        groups = {cracky = 3},
+    }
+    
+    if has_inventory then
+        node_def.on_construct = function(pos) modern_on_construct(pos, desc, c, l) end
+        for k, v in pairs(modern_inventory_functions()) do
+            node_def[k] = v
+        end
+    end
+    
+    minetest.register_node(name, node_def)
+end
 
-minetest.register_node("modern_kitchen:knives_holder", {
-    description = "Knives holder",
-    drawtype = "mesh",
-    mesh = "knives_holder.gltf",
-    tiles = {"knives_holder.png", "knives.png",},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
+-- Register decorative kitchen items
+register_kitchen_node("modern_kitchen:paper_towel", "Paper towel", "sopalin.gltf", {"plywood.png", "paper_towel.png"}, false)
+register_kitchen_node("modern_kitchen:knives_holder", "Knives holder", "knives_holder.gltf", {"knives_holder.png", "knives.png"}, false)
+register_kitchen_node("modern_kitchen:sushi", "Sushi", "sushi.gltf", {"sushi_tray.png", "sushi_whites.png", "sushi_shopsticks.png", "sushi_blacks.png", "sushi_sauce.png"}, false)
 
-minetest.register_node("modern_kitchen:sushi", {
-    description = "Sushi",
-    drawtype = "mesh",
-    mesh = "sushi.gltf",
-    tiles = {"sushi_tray.png", "sushi_whites.png", "sushi_shopsticks.png", "sushi_blacks.png", "sushi_sauce.png"},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
+-- Register black gilt furniture
+register_kitchen_node("modern_kitchen:black_cupboard_low", "Low Cupboard", "black_cupboard_low.gltf", {"gris_placard.png", "noir.png", "gold.png"}, true, 8, 2)
+register_kitchen_node("modern_kitchen:black_cupboard_large", "Large Cupboard", "black_cupboard_large.gltf", {"gris_placard.png", "noir.png", "gold.png"}, true, 8, 4)
+register_kitchen_node("modern_kitchen:black_cupboard", "Cupboard", "black_cupboard.gltf", {"gris_placard.png", "noir.png", "gold.png"}, true, 8, 3)
 
-
---Black gilt furnitures
-minetest.register_node("modern_kitchen:black_cupboard_low", {
-    description = "Low Cupboard",
-    drawtype = "mesh",
-    mesh = "black_cupboard_low.gltf",
-    tiles = {"gris_placard.png", "noir.png", "gold.png",},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
-
-minetest.register_node("modern_kitchen:black_cupboard_large", {
-    description = "Large Cupboard",
-    drawtype = "mesh",
-    mesh = "black_cupboard_large.gltf",
-    tiles = {"gris_placard.png", "noir.png", "gold.png"},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-    selection_box = {
-        type = "fixed",
-        fixed = {
-            {-0.5, -0.5, -0.5, 0.5, 1.5, 0.5},
-        },
-    },
-    collision_box = {
-        type = "fixed",
-        fixed = {
-            {-0.5, -0.5, -0.5, 0.5, 1.5, 0.5},
-        },
-    },
-})
-
-minetest.register_node("modern_kitchen:black_cupboard", {
-    description = "Cupboard",
-    drawtype = "mesh",
-    mesh = "black_cupboard.gltf",
-    tiles = {"gris_placard.png", "noir.png", "gold.png",},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
-
-
---White plywood furnitures
-minetest.register_node("modern_kitchen:simple_furniture", {
-    description = "Simple furniture",
-    drawtype = "mesh",
-    mesh = "simple_furniture.gltf",
-    tiles = {"concrete_white.png", "plywood.png"},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
-
-minetest.register_node("modern_kitchen:worktop_central", {
-    description = "Worktop Central",
-    drawtype = "mesh",
-    mesh = "worktop_central.gltf",
-    tiles = {"polished_stone.png", "plywood.png"},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
-
-minetest.register_node("modern_kitchen:worktop_border", {
-    description = "Worktop Border",
-    drawtype = "mesh",
-    mesh = "worktop_border.gltf",
-    tiles = {"polished_stone.png", "plywood.png"},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
-
-minetest.register_node("modern_kitchen:sink", {
-    description = "Sink",
-    drawtype = "mesh",
-    mesh = "sink.gltf",
-    tiles = {"plywood.png", "concrete_white.png"},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
-
+-- Register white plywood furniture
+register_kitchen_node("modern_kitchen:simple_furniture", "Simple furniture", "simple_furniture.gltf", {"concrete_white.png", "plywood.png"}, true, 8, 2)
+register_kitchen_node("modern_kitchen:worktop_central", "Worktop Central", "worktop_central.gltf", {"polished_stone.png", "plywood.png"}, false)
+register_kitchen_node("modern_kitchen:worktop_border", "Worktop Border", "worktop_border.gltf", {"polished_stone.png", "plywood.png"}, false)
+register_kitchen_node("modern_kitchen:sink", "Sink", "sink.gltf", {"plywood.png", "concrete_white.png"}, true, 8, 2)

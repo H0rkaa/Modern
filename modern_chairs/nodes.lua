@@ -1,70 +1,26 @@
 --Plywood chairs
-minetest.register_node("modern_chairs:stool_plywood", {
-    description = "Stool in plywood",
-    drawtype = "mesh",
-    mesh = "stool.gltf",
-    tiles = {"plywood.png"},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
+local function register_chair(name, desc, mesh, tiles)
+    minetest.register_node(name, {
+        description = desc,
+        drawtype = "mesh",
+        mesh = mesh,
+        tiles = tiles,
+        paramtype = "light",
+        paramtype2 = "facedir",
+        sunlight_propagates = true,
+        groups = {cracky = 3},
+    })
+end
 
-minetest.register_node("modern_chairs:armchair_plywood", {
-    description = "Armchair in plywood",
-    drawtype = "mesh",
-    mesh = "fauteuil.gltf",
-    tiles = {"plywood.png", "wool_white.png", "coussin.png",},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
+local chair_variants = {
+    {"stool_plywood", "Stool in plywood", "stool.gltf", {"plywood.png"}},
+    {"armchair_plywood", "Armchair in plywood", "fauteuil.gltf", {"plywood.png", "wool_white.png", "coussin.png"}},
+    {"stool_wood_light", "Stool in light wood", "stool.gltf", {"wood_light.png"}},
+    {"armchair_wood_light", "Armchair in light wood", "fauteuil.gltf", {"wood_light.png", "wool_white.png", "coussin.png"}},
+    {"stool_wood_dark", "Stool in dark wood", "stool.gltf", {"wood_dark.png"}},
+    {"armchair_wood_dark", "Armchair in dark wood", "fauteuil.gltf", {"wood_dark.png", "wool_white.png", "coussin.png"}},
+}
 
-
---Wood light chairs
-minetest.register_node("modern_chairs:stool_wood_light", {
-    description = "Stool in light wood",
-    drawtype = "mesh",
-    mesh = "stool.gltf",
-    tiles = {"wood_light.png"},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
-
-minetest.register_node("modern_chairs:armchair_wood_light", {
-    description = "Armchair in light wood",
-    drawtype = "mesh",
-    mesh = "fauteuil.gltf",
-    tiles = {"wood_light.png", "wool_white.png", "coussin.png",},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
-
-
---Wood dark chairs
-minetest.register_node("modern_chairs:stool_wood_dark", {
-    description = "Stool in dark wood",
-    drawtype = "mesh",
-    mesh = "stool.gltf",
-    tiles = {"wood_dark.png"},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
-
-minetest.register_node("modern_chairs:armchair_wood_dark", {
-    description = "Armchair in dark wood",
-    drawtype = "mesh",
-    mesh = "fauteuil.gltf",
-    tiles = {"wood_dark.png", "wool_white.png", "coussin.png",},
-    paramtype = "light",
-    paramtype2 = "facedir",
-    sunlight_propagates = true,
-    groups = {cracky = 3},
-})
+for _, chair in ipairs(chair_variants) do
+    register_chair("modern_chairs:" .. chair[1], chair[2], chair[3], chair[4])
+end
