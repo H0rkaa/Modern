@@ -1,9 +1,10 @@
-local function register_livingroom_node(name, desc, mesh, tiles, has_inventory, c, l)
+local function register_livingroom_node(name, desc, mesh, tiles, has_inventory, c, l, alpha)
     local node_def = {
         description = desc,
         drawtype = "mesh",
         mesh = mesh,
         tiles = tiles,
+        use_texture_alpha = alpha,
         paramtype = "light",
         paramtype2 = "facedir",
         sunlight_propagates = true,
@@ -24,6 +25,8 @@ register_livingroom_node("modern_livingroom:buffet_marble", "Marble Buffet", "bu
 register_livingroom_node("modern_livingroom:tv", "Television", "tv.gltf", {"tv.png","tv_foot.png","tv_foot.png"})
 register_livingroom_node("modern_livingroom:tv_soundbar", "Television Soundbar", "tv_soundbar.gltf", {"tv_soundbar.png"})
 register_livingroom_node("modern_livingroom:tv_wall_mounted", "Television Wall-Mounted", "tv_wall_mounted.gltf", {"tv.png"})
+register_livingroom_node("modern_livingroom:coffee_table_glass", "Glass Coffee Table", "coffee_table_glass.gltf", {"coffee_table_glass_frame.png", "wood_dark.png", "coffee_table_glass_glass.png", "concrete_white.png"}, true, 8, 3, true)
+
 
 
 -- Fonction utilitaire pour basculer un rideau

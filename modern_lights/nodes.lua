@@ -1,9 +1,10 @@
 -- Enregistre une lampe simple
+
 modern_lights.register_lampe("modern_lights:lamp_classic", {
     description = "Classic Lamp",
     drawtype = "mesh",
-    mesh = "lampe.obj",
-    tiles = {"plywood.png", "ampoule.png", "noir.png", "verre.png"},
+    mesh = "classic_lamp.gltf",
+    tiles = {"plywood.png", "verre.png", "noir.png", "ampoule.png"},
     paramtype = "light",
     paramtype2 = "facedir",
     use_texture_alpha = "clip",
